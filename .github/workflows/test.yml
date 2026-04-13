@@ -17,4 +17,4 @@ jobs:
         continue-on-error: true
       - run: npm test
       - run: npm audit
-    continue-on-error: true
+        continue-on-error: true
