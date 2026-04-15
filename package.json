@@ -55,5 +55,8 @@
     "arrowParens": "avoid",
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "dependencies": {
+    "react-router-dom": "7.14.1"
   }
 }
