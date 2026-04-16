@@ -8,6 +8,9 @@ function Home() {
       <nav>
         <Link to="/twoships">Two Ships Passing In The Night</Link>
       </nav>
+      <nav>
+        <Link to="/spacewords">Spacewords</Link>
+      </nav>
     </div>
   );
 }
