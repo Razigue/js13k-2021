@@ -11,6 +11,7 @@ test('quand on clique sur le jeu les hp sont à 100', async ({ page }) => {
   await page.goto('/');
   const health = page.locator('.h').textContent();
   await page.locator('body').click();
+  await page.waitForTimeout(25000);
   expect(await health).toBe('100');
 });
 
