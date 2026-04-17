@@ -1,22 +1,28 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
 
-test('le game over est caché au démarrage', async ({ page }) => {
-  await page.goto('/');
-  const gameover = page.locator('.e');
-  await expect(gameover).toBeHidden();
+test('quand la page se charge le canva est visible', async ({ page }) => {
+  await page.goto('http://localhost:3000');
+  const canvas = page.locator('canvas');
+  await expect(canvas).toBeVisible();
 });
 
-test('le bouton restart est caché', async ({ page }) => {
-  await page.goto('/');
-  const restart = page.locator('.n');
-  await expect(restart).toBeHidden();
+test('quand on clique sur le jeu les hp sont à 100', async ({ page }) => {
+  await page.goto('http://localhost:3000');
+  const health = page.locator('.h').textContent();
+  await page.locator('body').click();
+  expect(await health).toBe('100');
 });
 
-test('le score est caché au début du jeu', async ({ page }) => {
-  await page.goto('/');
-  const score = page.locator('.s');
-  await expect(score).toBeHidden();
+test('quand on lance le jeu et attend 15 seconde on meurt', async ({
+  page,
+}) => {
+  test.setTimeout(120_000);
+  await page.goto('http://localhost:3000');
+  await page.waitForSelector('canvas');
+  await page.locator('body').click();
+  await page.waitForTimeout(25000);
+  expect(page.locator('.n')).toBeVisible({ timeout: 25000 });
 });
 //   // Expect a title "to contain" a substring.
 //   await expect(page).toHaveTitle(/Playwright/);
