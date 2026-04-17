@@ -10,7 +10,7 @@ test('quand la page se charge le canva est visible', async ({ page }) => {
 test('quand on clique sur le jeu les hp sont à 100', async ({ page }) => {
   await page.goto('/');
   const health = page.locator('.h').textContent();
-  await page.locator('body').click();
+  await page.locator('.r').click();
   await page.waitForTimeout(25000);
   expect(await health).toBe('100');
 });
@@ -21,9 +21,9 @@ test('quand on lance le jeu et attend 15 seconde on meurt', async ({
   test.setTimeout(120_000);
   await page.goto('/');
   await page.waitForSelector('canvas');
-  await page.locator('body').click();
+  await page.locator('.r').click();
   await page.waitForTimeout(25000);
-  expect(page.locator('.n')).toBeVisible({ timeout: 25000 });
+  await expect(page.locator('.n')).toBeVisible({ timeout: 25000 });
 });
 //   // Expect a title "to contain" a substring.
 //   await expect(page).toHaveTitle(/Playwright/);
