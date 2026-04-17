@@ -9,9 +9,9 @@ test('quand la page se charge le canva est visible', async ({ page }) => {
 
 test('quand on clique sur le jeu les hp sont à 100', async ({ page }) => {
   await page.goto('http://localhost:3000');
-  const health = page.locator('.h').textContent();
+  const health = await page.textContent('.h');
   await page.locator('body').click();
-  expect(await health).toBe('100');
+  expect(health).toBe('100');
 });
 
 test('quand on lance le jeu et attend 15 seconde on meurt', async ({
