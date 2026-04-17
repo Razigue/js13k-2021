@@ -24,10 +24,14 @@ test('randFloat(5, 10) returns a value between 5 and 10', () => {
   expect(result).toBeLessThanOrEqual(10);
 });
 
-test('clamp(1, 6, 5) must return 5', () => {
-  expect(clamp(1, 6, 5)).toBe(5);
+test('clamp(1, 2, 4) must return 2', () => {
+  expect(clamp(1, 2, 4)).toBe(2);
 });
 
-test('clamp(2, 10, 1) must return 2', () => {
-  expect(clamp(2, 10, 1)).toBe(2);
+test('clamp(10, 1, 5) must return 5', () => {
+  expect(clamp(10, 1, 5)).toBe(5);
+});
+
+test('clamp(5, 1, 10) must return 5', () => {
+  expect(clamp(5, 1, 10)).toBe(5);
 });
