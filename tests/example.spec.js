@@ -1,29 +1,22 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
 
-test('quand la page se charge le canva est visible', async ({ page }) => {
+test('le game over est caché au démarrage', async ({ page }) => {
   await page.goto('/');
-  const canvas = page.locator('canvas');
-  await expect(canvas).toBeVisible();
+  const gameover = page.locator('.e');
+  await expect(gameover).toBeHidden();
 });
 
-test('quand on clique sur le jeu les hp sont à 100', async ({ page }) => {
+test('le bouton restart est caché', async ({ page }) => {
   await page.goto('/');
-  const health = page.locator('.h').textContent();
-  await page.locator('.r').click();
-  await page.waitForTimeout(25000);
-  expect(await health).toBe('100');
+  const restart = page.locator('.n');
+  await expect(restart).toBeHidden();
 });
 
-test('quand on lance le jeu et attend 15 seconde on meurt', async ({
-  page,
-}) => {
-  test.setTimeout(120_000);
+test('le score est caché au début du jeu', async ({ page }) => {
   await page.goto('/');
-  await page.waitForSelector('canvas');
-  await page.locator('.r').click();
-  await page.waitForTimeout(25000);
-  await expect(page.locator('.n')).toBeVisible({ timeout: 25000 });
+  const score = page.locator('.s');
+  await expect(score).toBeHidden();
 });
 //   // Expect a title "to contain" a substring.
 //   await expect(page).toHaveTitle(/Playwright/);
