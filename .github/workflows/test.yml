@@ -17,6 +17,7 @@ jobs:
       - run: npm run lint
         continue-on-error: true
       - run: npm test
-      - run: xvfb-run npx playwright test
+      - run: npx playwright install
+      - run: npx playwright test
       - run: npm audit
         continue-on-error: true
