@@ -20,8 +20,8 @@ jobs:
       - run: npx playwright install
       - run: npx playwright test
       - run: npm audit
-      - run: docker compose build
         continue-on-error: true
+      - run: docker compose build
       - name: Résumé
         if: always()
         run: |
