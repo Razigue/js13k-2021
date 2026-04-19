@@ -20,4 +20,9 @@ jobs:
       - run: npx playwright install
       - run: npx playwright test
       - run: npm audit
+      - run: docker compose build
         continue-on-error: true
+      - name: Résumé
+        run: |
+          echo "::notice::Pipeline CI terminée avec succès"
+          echo "## Résumé de la pipeline" >> $GITHUB_STEP_SUMMARY
